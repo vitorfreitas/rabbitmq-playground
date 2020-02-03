@@ -13,13 +13,12 @@ async function createChannel(conn) {
 
 async function consumeFromChannel({channel}) {
   await channel.assertQueue(queueName, {durable: false});
-  channel.consume(queueName, logQueueMessage, {
-    noAck: true,
-  });
+  channel.consume(queueName, msg => logMessageAndSendAck(msg, channel));
 }
 
-function logQueueMessage(message) {
+function logMessageAndSendAck(message, channel) {
   console.log(message.content.toString());
+  channel.ack(message);
 }
 
 function init() {
