@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "scripts": {
+    "lint": "eslint src"
+  },
   "dependencies": {
     "amqplib": "^0.5.5"
   },
