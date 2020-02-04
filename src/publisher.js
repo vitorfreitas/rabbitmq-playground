@@ -1,6 +1,6 @@
 const open = require('amqplib').connect('amqp://localhost');
 
-const queueName = 'hello';
+const queueName = 'new_hello';
 
 async function createChannel(conn) {
   const channel = await conn.createChannel();
@@ -9,8 +9,10 @@ async function createChannel(conn) {
 }
 
 async function publishDefaultMessage({ conn, channel }) {
-  await channel.assertQueue(queueName, { durable: false });
-  channel.sendToQueue(queueName, Buffer.from('Incredible message'));
+  await channel.assertQueue(queueName, { durable: true });
+  channel.sendToQueue(queueName, Buffer.from('Incredible message'), {
+    persistent: true
+  });
 
   return {
     conn,
