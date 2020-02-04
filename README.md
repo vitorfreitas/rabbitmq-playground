@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/vitorfreitas/rabbitmq-playground.svg?style=svg&circle-token=b26fd3969e38b34bc4322e04908c566a413cf869)](https://circleci.com/gh/vitorfreitas/rabbitmq-playground)
+
 # RabbitMQ playground using Node.js
 
 ## Dependencies
