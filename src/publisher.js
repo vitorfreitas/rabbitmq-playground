@@ -5,23 +5,20 @@ const queueName = 'hello';
 async function createChannel(conn) {
   const channel = await conn.createChannel();
 
-  return {
-    conn,
-    channel,
-  };
+  return { conn, channel };
 }
 
-async function publishDefaultMessage({conn, channel}) {
-  await channel.assertQueue(queueName, {durable: false});
+async function publishDefaultMessage({ conn, channel }) {
+  await channel.assertQueue(queueName, { durable: false });
   channel.sendToQueue(queueName, Buffer.from('Incredible message'));
 
   return {
     conn,
-    channel,
+    channel
   };
 }
 
-async function closeConnection({conn, channel}) {
+async function closeConnection({ conn, channel }) {
   await channel.close();
   await conn.close();
 }

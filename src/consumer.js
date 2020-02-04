@@ -5,14 +5,11 @@ const queueName = 'hello';
 async function createChannel(conn) {
   const channel = await conn.createChannel();
 
-  return {
-    conn,
-    channel,
-  };
+  return { conn, channel };
 }
 
-async function consumeFromChannel({channel}) {
-  await channel.assertQueue(queueName, {durable: false});
+async function consumeFromChannel({ channel }) {
+  await channel.assertQueue(queueName, { durable: false });
   channel.consume(queueName, msg => logMessageAndSendAck(msg, channel));
 }
 
