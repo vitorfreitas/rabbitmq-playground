@@ -4,7 +4,9 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "queue:publish": "node src/publisher",
+    "queue:consume": "node src/consumer"
   },
   "dependencies": {
     "amqplib": "^0.5.5"
